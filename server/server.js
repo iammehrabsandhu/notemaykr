@@ -64,7 +64,7 @@ app.post("/checkUser",async(req,res)=>{
         else{
             const token = jwt.sign({username:vuser.username},`${JWTkey}`);
             console.log(`given ${token}`);
-            res.cookie('token',token,{sameSite:"none"});
+            res.cookie('token',token,{sameSite:"none",secure:true});
             res.status(201).send("cookie sent!"); 
         }
     }
