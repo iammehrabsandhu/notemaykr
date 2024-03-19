@@ -11,33 +11,42 @@ function App() {
   const [showModal,setShowModal]=useState(false);
   const [show, setShow] = useState(false);
   const [showEModal,setEModal]=useState(false);
-  useEffect(()=>{setShow(true)},[])
+  const [showL,setL]=useState(false);
+  
+  const user = localStorage.getItem('user');
+
+  
+  useEffect(()=>{setShow(true);  if(user){console.log(user);
+    setL(true);}},[])
   return (
     <div>
-      <div className='bg-[url(./images/jp1.jpg)] bg-cover bg-fixed '>
-      <div className='flex justify-between p-3 bg-black fixed w-full'>
-      <h1 className='text-3xl text-white font-mono'>Notemaykr.</h1><div>
+      <div className='bg-white'>
+      <div className='flex justify-between p-3  pt-4 fixed w-full bg-white border-b-2'>
+      <h1 className='text-3xl text-black font-mono ' >N O T E  M A Y K R.</h1><div>
 
-      <Link to="/notes"><button className=' p-2 text-white rounded-3xl px-4 hover:bg-white hover:text-black duration-500 mr-2'>Your Notes</button></Link>
-      <Link to="/PublicNotes"><button className=' p-2 text-white rounded-3xl px-4 hover:bg-white hover:text-black duration-500 mr-2'>Public Notes</button></Link>
-      <button className='px-4 text-white rounded-3xl p-2 hover:bg-white hover:text-black duration-500 mr-2' onClick={()=>{setShowModal(true)}}>Register</button>
-      <button className='px-4 text-white rounded-3xl p-2 hover:bg-white hover:text-black duration-500 mr-2' onClick={()=>{setEModal(true)}}>Login</button>
+      {showL && <Link to="/notes"><button className=' p-2 text-black rounded-3xl px-4 hover:bg-white hover:text-gray-500 duration-500 mr-2'>Your Notes</button></Link>}
+      {showL && <Link to="/PublicNotes"><button className=' p-2 text-black rounded-3xl px-4 hover:bg-white hover:text-gray-500 duration-500 mr-2'>Public Notes</button></Link>}
+      {!showL && <button className='px-4 text-black rounded-3xl p-2 hover:bg-white hover:text-gray-500 duration-500 mr-2' onClick={()=>{setShowModal(true)}}>Register</button>}
+      {!showL && <button className='px-4 text-black rounded-3xl p-2 hover:bg-white hover:text-gray-500 duration-500 mr-2'  onClick={()=>{setEModal(true)}}>Login</button>}
+      {showL && <button className='px-4 text-black rounded-3xl p-2 hover:bg-white hover:text-gray-500 duration-500 mr-2' id="userNN" onClick={()=>{localStorage.clear();window.location.reload(true);}}>Logout</button>}
       {showModal && <NUserModal onClose={()=>{setShowModal(false)}}/>}
       {showEModal && <EUserModal onClose={()=>{setEModal(false)}}/>}
       </div> 
+      </div> 
+      <div className=' text-white md:px-16 mb-40 flex flex-row'>
+      <div className={`sm:pt-[24%] pt-[65%] text-8xl font-bold transition-opacity ${show ? 'opacity-100' : 'opacity-0'} duration-1000  ease-in-out delay-300 text-black`}>Superior<br/> Note-Making</div>
+        <div className={`sm:pt-[24%] pt-[65%] ml-[30%] transition-opacity text-2xl my-8 font-light flex flex-row ${show ? 'opacity-100' : 'opacity-0'} duration-1000 ease-in-out delay-700 text-black`}>
+        <p>Organise & Execute. </p>
+        </div>
       </div>
-      <div className=' text-white px-16'>
-      <div className={`pt-[24%] text-8xl font-bold transition-opacity ${show ? 'opacity-100' : 'opacity-0'} duration-1000 ease-in-out delay-300`}>Superior<br/> Note-Making</div>
-      <div className={`pt-[2%]  transition-opacity text-2xl my-8 font-light ${show ? 'opacity-100' : 'opacity-0'} duration-1000 ease-in-out delay-700`}>Organise, Execute.</div>
-      </div>
-      <div className='flex justify-between  mt-32 py-[12%] rounded-t-[62px] bg-white px-24 '>
+      <div className='flex flex-row bg-black md:pl-24 '>
         
-        <div className='text-center mx-48 shadow-lg p-5 rounded-3xl'>
-         <h1 className='text-3xl mb-14 mt-10 font-extralight'>The Aim</h1>
-          <p className='font-light'>You can also use variant modifiers to target media queries like responsive breakpoints, dark mode, prefers-reduced-motion, and more. For example, use md:space-x-8 to apply the space-x-8 utility at only medium screen sizes and above.</p>
-        </div> 
+        
+        <div className='float-right font-light w-1/2 text-4xl mt-32 py-[12%] text-white'><p className='md:m-20'>Effortlessly plan and execute your tasks with precision. Streamline organization and seamless execution for optimal productivity.</p></div>
+          <img src='/images/jp2.jpg' className=' w-1/2' />
+      
       </div>
-      <div className='bg-black text-white text-center  px-20 py-[10%] font-mono'>" You can also use variant modifiers to target media queries like responsive breakpoints, dark mode, prefers-reduced "<br/>-Mehrab Sandhu</div>
+      <div className='bg-white text-black text-center  px-20 py-[10%] font-mono'>" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam "<br/>-Mehrab Sandhu</div>
     </div></div>
   );
 }

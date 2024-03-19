@@ -22,11 +22,11 @@ function PostModal({onClose}){
 
             };
             const re = localStorage.getItem('token');
-            await axios.post('http://localhost:3000/blogs',formData, {
+            console.log(formData);
+            await axios.post('https://notemaykr.onrender.com/blogs',formData, {
                 withCredentials: true,
                 headers:{'Authorization':`Bearer ${re}`}
             });
-            window.location.reload(true);
 
         }
     return(

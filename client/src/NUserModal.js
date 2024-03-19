@@ -13,17 +13,17 @@ function NUserModal({onClose}){
             username:username,
             password:password
         }
-        await axios.post("http://localhost:3000/newUser",formData);
+        await axios.post("https://notemaykr.onrender.com/newUser",formData);
         window.location.reload(true);
     }
     return(
 <div className="fixed h-screen inset-0 backdrop-blur-sm">
-    <div className="flex flex-col mx-[35%] my-60 bg-white py-2 rounded-xl ">
+    <div className="flex flex-col mx-[40%] my-60 bg-white py-2 rounded-xl border-2">
         
             <form className="flex flex-col"onSubmit={handleLogin}>
-        <input required type="text" placeholder="create a username" value={username} onChange={(e)=>{setUsername(e.target.value);}}className="text-center py-3"></input>
-        <input required type="text" placeholder="set password" value={password} onChange={(e)=>{setPassword(e.target.value);}}className="text-center pb-4"></input>
-        <button type="submit" id="newuserbtn"className="bg-black p-2 text-white">Submit</button>
+        <input required type="text" placeholder="Set username" value={username} onChange={(e)=>{setUsername(e.target.value);}}className="text-center py-3"></input>
+        <input required type="text" placeholder="Set password" value={password} onChange={(e)=>{setPassword(e.target.value);}}className="text-center pb-4"></input>
+        <button type="submit" id="newuserbtn"className="bg-black p-2 text-white">Register</button>
 
             </form>
         
