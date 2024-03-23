@@ -113,4 +113,4 @@ app.patch("/edit",async(req,res)=>{
 app.listen(3000,()=>{console.log(`running on dat ${port}`)});
 
 
-
+export default app;
